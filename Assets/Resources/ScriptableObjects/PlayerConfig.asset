@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8df405948f548ef91dad46c101de585, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  _playerSettings:
-    Health: 0
-    ProtectionFactor: 0
-    MovementSpeed: 0
-    RotationSpeed: 0
+  _playerModel:
+    View: {fileID: 3485549257688186660, guid: 340aa5b770c002c43b1e1fb714d44bb7, type: 3}
+    Settings:
+      Health: 100
+      ProtectionFactor: 0.5
+      MovementSpeed: 10
+      RotationSpeed: 150
   _weaponsModels: []

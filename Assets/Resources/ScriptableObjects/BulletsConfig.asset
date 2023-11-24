@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b914af76e744ef693b821fd67a93ee4, type: 3}
+  m_Name: BulletsConfig
+  m_EditorClassIdentifier: 
+  _prefabs:
+  - {fileID: 5090216996831763576, guid: 3b708c699dd75614e83ff5d80fea428f, type: 3}
+  - {fileID: 4768509159401637991, guid: 88bca07cebba476409729f6fdbbea744, type: 3}
+  - {fileID: 7565474066666150362, guid: 6b4d846b4ffd6724b8f15e519efd7142, type: 3}
