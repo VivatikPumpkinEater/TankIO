@@ -30,14 +30,12 @@ public class WeaponsConfigEditor : Editor
             {
                 var modelProperty = _modelsProperty.GetArrayElementAtIndex(i);
 
-                // EditorGUILayout.PropertyField(modelProperty);
-
-                DrawRangeWeaponInspector(modelProperty);
+                DrawWeaponInspector(modelProperty);
                 
                 if (GUILayout.Button("RemoveElement", GUILayout.Height(15)))
                 {
                     _config.RemoveElement(i);
-                    return;
+                    break;
                 }
 
                 EditorGUILayout.Space();
@@ -49,7 +47,7 @@ public class WeaponsConfigEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
-    private void DrawRangeWeaponInspector(SerializedProperty modelProperty)
+    private void DrawWeaponInspector(SerializedProperty modelProperty)
     {
         var nameProperty = modelProperty.FindPropertyRelative("Name");
         EditorGUILayout.LabelField(nameProperty.stringValue, EditorStyles.boldLabel);
