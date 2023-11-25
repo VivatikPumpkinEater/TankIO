@@ -1,5 +1,4 @@
 ﻿using System;
-using Object = UnityEngine.Object;
 
 public abstract class Unit<T> : IUnit
     where T : UnitView
@@ -25,7 +24,8 @@ public abstract class Unit<T> : IUnit
         HealthBar.Init(baseSettings.Health);
         
         ProtectionBar = view.ProtectionBar;
-        ProtectionBar.Init(baseSettings.ProtectionFactor);
+        var protectiveFactor = 1f - baseSettings.ProtectionFactor;
+        ProtectionBar.Init(protectiveFactor);
 
         View.Damaged += OnTakeDamage;
     }
@@ -52,11 +52,10 @@ public abstract class Unit<T> : IUnit
             StartDie();
     }
 
-    private void StartDie()
+    protected virtual void StartDie()
     {
         Die?.Invoke(this);
         
         View.Damaged -= OnTakeDamage;
-        Object.Destroy(View.gameObject);
     }
 }

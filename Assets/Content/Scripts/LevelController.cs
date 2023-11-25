@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour
 {
@@ -25,6 +25,7 @@ public class LevelController : MonoBehaviour
         var (healthBar, protectionBar) = _hud.Bars;
         playerView.SetBars(healthBar, protectionBar);
         _player = new PlayerController(playerView, PlayerConfig.PlayerSettings, worldSize);
+        _player.Die += OnPlayerDie;
 
         _updateSystem = new GameObject("UpdateSystem").AddComponent<UpdateSystem>();
         _enemiesSystem = new EnemiesSystem(worldSize, playerView.transform, _updateSystem);
@@ -32,6 +33,13 @@ public class LevelController : MonoBehaviour
         _weaponSystem = new WeaponSystem(playerView.WeaponHolder, playerView.TargetType, _hud);
         
         _updateSystem.Register(_player);
+    }
+    
+    //Заглушка
+    private void OnPlayerDie(IUnit _)
+    {
+        _player.Die -= OnPlayerDie;
+        SceneManager.LoadScene(0);
     }
 
     private void Update()
