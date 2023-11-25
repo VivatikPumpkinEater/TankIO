@@ -10,8 +10,6 @@ public class RangeWeaponController
     private readonly BulletPool _pool;
     private readonly WeaponSettings _settings;
 
-    private int DelayBetweenShot => (int)(_settings.DelayBetweenShots * 1000f);
-
     private CancellationTokenSource _cts;
 
     private bool _ready;
@@ -26,14 +24,18 @@ public class RangeWeaponController
 
     public void SetActive(bool value)
     {
+        _cts?.Cancel();
         _view.gameObject.SetActive(value);
     }
     
-    public async void Shot()
+    public async UniTask Shot()
     {
         var repeat = _settings.FiringInBursts ? _settings.BurstsSettings.BulletCount : 1;
         var delay = _settings.FiringInBursts ? (int)(_settings.BurstsSettings.DelayInBurst * 1000) : 0;
 
+        _cts?.Cancel();
+        _cts = new();
+        
         for (var i = 0; i < repeat; i++)
         {
             var directions = Spread();
@@ -41,7 +43,10 @@ public class RangeWeaponController
             foreach (var direction in directions)
                 ShootBullet(direction);
             
-            await UniTask.Delay(delay);
+            await UniTask.Delay(delay, cancellationToken: _cts.Token);
+            
+            if (_cts.IsCancellationRequested)
+                return;
         }
     }
 
@@ -77,5 +82,11 @@ public class RangeWeaponController
         }
         
         return directions;
+    }
+
+    public void Dispose()
+    {
+        _cts?.Cancel();
+        _cts = null;
     }
 }

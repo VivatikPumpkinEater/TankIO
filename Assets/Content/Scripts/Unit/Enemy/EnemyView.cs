@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyView : UnitView
 {
-    public Action<IDamageable> Damaged;
+    public event Action<IDamageable> Damaged;
 
     private void OnCollisionEnter2D(Collision2D other)
     {

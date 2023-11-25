@@ -68,9 +68,6 @@ public class WeaponsConfigEditor : Editor
         var speedProperty = settingsProperty.FindPropertyRelative("Speed");
         EditorGUILayout.PropertyField(speedProperty);
 
-        var delayBetweenShotsProperty = settingsProperty.FindPropertyRelative("DelayBetweenShots");
-        EditorGUILayout.PropertyField(delayBetweenShotsProperty);
-        
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Bursts Settings", EditorStyles.boldLabel);
         var firingInBurstsProperty = settingsProperty.FindPropertyRelative("FiringInBursts");

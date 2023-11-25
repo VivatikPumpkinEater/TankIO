@@ -4,33 +4,35 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] private HUD _hud;
-    [SerializeField] private float _borderOffset;
     
     private PlayerController _player;
 
     private UpdateSystem _updateSystem;
     private EnemiesSystem _enemiesSystem;
     private WeaponSystem _weaponSystem;
-
+    private PlayerInput _playerInput;
+    
     private Camera _camera;
     
     private void Awake()
     {
         _camera = Camera.main;
-        var borderOffset = Vector2.one * _borderOffset;
         var screenResolution = _camera.pixelRect.size;
-        var worldSize = _camera.ScreenToWorldPoint(screenResolution) + (Vector3)borderOffset;
+        var worldSize = _camera.ScreenToWorldPoint(screenResolution);
+
+        _playerInput = new PlayerInput();
+        _playerInput.Enable();
 
         var playerView = Instantiate(PlayerConfig.PlayerView, Vector3.zero, Quaternion.identity);
         var (healthBar, protectionBar) = _hud.Bars;
         playerView.SetBars(healthBar, protectionBar);
-        _player = new PlayerController(playerView, PlayerConfig.PlayerSettings, worldSize);
+        _player = new PlayerController(playerView, PlayerConfig.PlayerSettings, worldSize, _playerInput);
         _player.Die += OnPlayerDie;
 
         _updateSystem = new GameObject("UpdateSystem").AddComponent<UpdateSystem>();
         _enemiesSystem = new EnemiesSystem(worldSize, playerView.transform, _updateSystem);
 
-        _weaponSystem = new WeaponSystem(playerView.WeaponHolder, playerView.TargetType, _hud);
+        _weaponSystem = new WeaponSystem(playerView.WeaponHolder, playerView.TargetType, _hud, _playerInput);
         
         _updateSystem.Register(_player);
     }
@@ -39,19 +41,14 @@ public class LevelController : MonoBehaviour
     private void OnPlayerDie(IUnit _)
     {
         _player.Die -= OnPlayerDie;
+        
+        Dispose();
         SceneManager.LoadScene(0);
     }
 
-    private void Update()
+    private void Dispose()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            _weaponSystem.SwitchWeapon();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _weaponSystem.Shot();
-        }
+        _playerInput.Disable();
+        _weaponSystem.Dispose();
     }
 }

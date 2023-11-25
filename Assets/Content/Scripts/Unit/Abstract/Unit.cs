@@ -3,7 +3,7 @@
 public abstract class Unit<T> : IUnit
     where T : UnitView
 {
-    public Action<IUnit> Die;
+    public event Action<IUnit> Die;
 
     protected readonly T View;
     

@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemiesSystem
 {
     private const int MaxCount = 10;
+    private const float BorderOffset = 2f;
 
     private readonly Vector2 _worldSize;
     private readonly Transform _target;
@@ -13,7 +14,9 @@ public class EnemiesSystem
 
     public EnemiesSystem(Vector2 worldSize, Transform target, UpdateSystem updateSystem)
     {
-        _worldSize = worldSize;
+        var borderOffset = Vector2.one * BorderOffset;
+
+        _worldSize = worldSize + borderOffset;
         _target = target;
         _updateSystem = updateSystem;
 
