@@ -5,41 +5,39 @@ using UnityEngine;
 public class WeaponsConfigEditor : Editor
 {
     private SerializedProperty _modelsProperty;
+    private WeaponsConfig _config;
 
     private void OnEnable()
     {
         _modelsProperty = serializedObject.FindProperty("_models");
+        _config = (WeaponsConfig)target;
     }
 
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
         
-        GUILayout.BeginHorizontal();
-        {
-            if (GUILayout.Button("Add Element", GUILayout.Height(40)))
-                _modelsProperty.arraySize++;
+        if (GUILayout.Button("Add Element", GUILayout.Height(40)))
+            _modelsProperty.arraySize++;
             
-            if (GUILayout.Button("RemoveElement", GUILayout.Height(40)))
-                _modelsProperty.arraySize--;
-        }
-        GUILayout.EndHorizontal();
+        EditorGUILayout.Space();
 
-        if (_modelsProperty.isExpanded)
+        if (_modelsProperty.arraySize > 0)
         {
             EditorGUI.indentLevel++;
 
             for (var i = 0; i < _modelsProperty.arraySize; i++)
             {
                 var modelProperty = _modelsProperty.GetArrayElementAtIndex(i);
-                var rangeWeaponProperty = modelProperty.FindPropertyRelative("RangeWeapon");
 
-                EditorGUILayout.PropertyField(modelProperty);
+                // EditorGUILayout.PropertyField(modelProperty);
 
-                if (rangeWeaponProperty.objectReferenceValue != null)
+                DrawRangeWeaponInspector(modelProperty);
+                
+                if (GUILayout.Button("RemoveElement", GUILayout.Height(15)))
                 {
-                    var rangeWeapon = (BaseRangeWeapon)rangeWeaponProperty.objectReferenceValue;
-                    DrawRangeWeaponInspector(rangeWeapon);
+                    _config.RemoveElement(i);
+                    return;
                 }
 
                 EditorGUILayout.Space();
@@ -51,13 +49,52 @@ public class WeaponsConfigEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
-    private void DrawRangeWeaponInspector(BaseRangeWeapon rangeWeapon)
+    private void DrawRangeWeaponInspector(SerializedProperty modelProperty)
     {
-        switch (rangeWeapon)
+        var nameProperty = modelProperty.FindPropertyRelative("Name");
+        EditorGUILayout.LabelField(nameProperty.stringValue, EditorStyles.boldLabel);
+        EditorGUILayout.PropertyField(nameProperty);
+        
+        var weaponProperty = modelProperty.FindPropertyRelative("WeaponView");
+        EditorGUILayout.PropertyField(weaponProperty);
+        
+        var settingsProperty = modelProperty.FindPropertyRelative("Settings");
+        
+        EditorGUILayout.LabelField("Weapon Settings", EditorStyles.boldLabel);
+        var bulletTypeProperty = settingsProperty.FindPropertyRelative("BulletType");
+        EditorGUILayout.PropertyField(bulletTypeProperty);
+
+        var damageProperty = settingsProperty.FindPropertyRelative("Damage");
+        EditorGUILayout.PropertyField(damageProperty);
+
+        var speedProperty = settingsProperty.FindPropertyRelative("Speed");
+        EditorGUILayout.PropertyField(speedProperty);
+
+        var delayBetweenShotsProperty = settingsProperty.FindPropertyRelative("DelayBetweenShots");
+        EditorGUILayout.PropertyField(delayBetweenShotsProperty);
+        
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Bursts Settings", EditorStyles.boldLabel);
+        var firingInBurstsProperty = settingsProperty.FindPropertyRelative("FiringInBursts");
+        EditorGUILayout.PropertyField(firingInBurstsProperty);
+        var firingInBursts = firingInBurstsProperty.boolValue;
+
+        if (firingInBursts)
         {
-            case SimpleRangeWeapon:
-                EditorGUILayout.LabelField("Simple", EditorStyles.boldLabel);
-                break;
+            var burstsSettingsProperty = settingsProperty.FindPropertyRelative("BurstsSettings");
+            EditorGUILayout.PropertyField(burstsSettingsProperty, true);
         }
+        
+        EditorGUILayout.Space();
+        EditorGUILayout.LabelField("Fractions Settings", EditorStyles.boldLabel);
+        var shootingFractionsProperty = settingsProperty.FindPropertyRelative("ShootingFractions");
+        EditorGUILayout.PropertyField(shootingFractionsProperty);
+        var shootingFractions = shootingFractionsProperty.boolValue;
+
+        if (!shootingFractions)
+            return;
+        
+        var fractionsSettingsProperty = settingsProperty.FindPropertyRelative("FractionsSettings");
+        EditorGUILayout.PropertyField(fractionsSettingsProperty, true);
     }
 }

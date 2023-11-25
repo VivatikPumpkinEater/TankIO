@@ -13,27 +13,59 @@ MonoBehaviour:
   m_Name: WeaponsConfig
   m_EditorClassIdentifier: 
   _models:
-  - Name: 
-    RangeWeapon: {fileID: 8521986523420695280, guid: 13f0f271f4959db479ebb54c77c4da6f, type: 3}
+  - Name: Simple
+    WeaponView: {fileID: 3535321844568045711, guid: 13f0f271f4959db479ebb54c77c4da6f, type: 3}
+    Settings:
+      BulletType: 1
+      Damage: 10
+      Speed: 25
+      DelayBetweenShots: 1
+      FiringInBursts: 0
+      BurstsSettings:
+        BulletCount: 55
+        DelayInBurst: 3.07
+      ShootingFractions: 0
+      FractionsSettings:
+        CountInFractions: 78
+  - Name: Bursts
+    WeaponView: {fileID: 2237371899903682083, guid: 4ab66794f840d5d4f809348b6d9b814e, type: 3}
+    Settings:
+      BulletType: 2
+      Damage: 8
+      Speed: 30
+      DelayBetweenShots: 1
+      FiringInBursts: 1
+      BurstsSettings:
+        BulletCount: 5
+        DelayInBurst: 0.1
+      ShootingFractions: 0
+      FractionsSettings:
+        CountInFractions: 78
+  - Name: FractionsWeapon
+    WeaponView: {fileID: 139434505780553106, guid: a04c518a06c563747b388803e1dedb86, type: 3}
+    Settings:
+      BulletType: 2
+      Damage: 15
+      Speed: 30
+      DelayBetweenShots: 1
+      FiringInBursts: 0
+      BurstsSettings:
+        BulletCount: 5
+        DelayInBurst: 0.1
+      ShootingFractions: 1
+      FractionsSettings:
+        CountInFractions: 3
+  - Name: Mix
+    WeaponView: {fileID: 1931321976469252411, guid: f32e6c7b4a6d4e94f824128ec2e926f1, type: 3}
     Settings:
       BulletType: 0
-      Damage: 0
-      Speed: 0
-  - Name: 
-    RangeWeapon: {fileID: 8521986523420695280, guid: 13f0f271f4959db479ebb54c77c4da6f, type: 3}
-    Settings:
-      BulletType: 0
-      Damage: 0
-      Speed: 0
-  - Name: 
-    RangeWeapon: {fileID: 8521986523420695280, guid: 13f0f271f4959db479ebb54c77c4da6f, type: 3}
-    Settings:
-      BulletType: 0
-      Damage: 0
-      Speed: 0
-  - Name: 
-    RangeWeapon: {fileID: 8521986523420695280, guid: 13f0f271f4959db479ebb54c77c4da6f, type: 3}
-    Settings:
-      BulletType: 0
-      Damage: 0
-      Speed: 0
+      Damage: 15
+      Speed: 30
+      DelayBetweenShots: 1
+      FiringInBursts: 1
+      BurstsSettings:
+        BulletCount: 5
+        DelayInBurst: 0.1
+      ShootingFractions: 1
+      FractionsSettings:
+        CountInFractions: 3
