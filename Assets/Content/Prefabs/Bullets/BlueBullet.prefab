@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5090216996831763576}
   - component: {fileID: 1979994208311159807}
   - component: {fileID: 5696920675467368260}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BlueBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -119,7 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2220542842464914245}
   - component: {fileID: 7392012188409014209}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

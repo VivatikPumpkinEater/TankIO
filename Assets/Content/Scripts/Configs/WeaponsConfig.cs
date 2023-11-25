@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class WeaponsConfig : BaseConfig<WeaponsConfig>
 {
     [SerializeField] private List<Model> _models;
+
+    public static List<Model> GetAll() => Instance._models;
 
 #if UNITY_EDITOR
 

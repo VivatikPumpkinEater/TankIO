@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5067776401951877553}
   - component: {fileID: 9028866081434058555}
   - component: {fileID: 8474376249417622808}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7249d6fb119f4b099dd132b8774e95f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _actorType: 1
+  _targetType: 0
   _healthBar: {fileID: 3883227936476551296}
   _protectionBar: {fileID: 3085052616487328975}
 --- !u!50 &9028866081434058555
@@ -74,9 +76,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!58 &8474376249417622808
 CircleCollider2D:
@@ -123,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2683736697386876607}
   - component: {fileID: 3728317546288207680}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,9 +251,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8395089017971445059, guid: bc9b07fa51679434f920ff81ee9b23da, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8505198037558187102, guid: bc9b07fa51679434f920ff81ee9b23da, type: 3}
       propertyPath: m_Name
       value: ProtectionBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8505198037558187102, guid: bc9b07fa51679434f920ff81ee9b23da, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -285,6 +295,14 @@ PrefabInstance:
     - target: {fileID: 2382904433208106000, guid: 6a677a3d45b019e47a3ebb782ed4e7a7, type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 2382904433208106000, guid: 6a677a3d45b019e47a3ebb782ed4e7a7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388797882332115167, guid: 6a677a3d45b019e47a3ebb782ed4e7a7, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7469247809133768834, guid: 6a677a3d45b019e47a3ebb782ed4e7a7, type: 3}
       propertyPath: m_RootOrder

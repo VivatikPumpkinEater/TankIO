@@ -32,7 +32,7 @@ public class WeaponsConfigEditor : Editor
 
                 DrawWeaponInspector(modelProperty);
                 
-                if (GUILayout.Button("RemoveElement", GUILayout.Height(15)))
+                if (GUILayout.Button("Remove Element", GUILayout.Height(15)))
                 {
                     _config.RemoveElement(i);
                     break;

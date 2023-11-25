@@ -130,8 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46352521b9754a368a343baa058d2659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootPoint: {fileID: 5502820092902883117}
-  _prefab: {fileID: 0}
+  _shotPoint: {fileID: 5502820092902883117}
 --- !u!1 &8677218983530543443
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,20 +1,23 @@
 ﻿using UnityEngine;
 
-public class Bullet : PoolObject, IFixedUpdate
+public class Bullet : PoolObject
 {
     private Rigidbody2D _rigidbody2D;
 
     private bool _isActive;
 
+    private ActorType _targetType;
     private Vector2 _direction;
     private float _speed;
     private float _damage;
     private float _maxDistance;
     private Vector2 _startPosition;
+    
     private Rigidbody2D Rb => _rigidbody2D ??= GetComponent<Rigidbody2D>();
 
-    public void Init(Vector2 direction, float maxDistance, float speed, float damage)
+    public void Init(ActorType targetType, Vector2 direction, float maxDistance, float speed, float damage)
     {
+        _targetType = targetType;
         _startPosition = transform.position;
         _direction = direction;
         _maxDistance = maxDistance;
@@ -24,7 +27,7 @@ public class Bullet : PoolObject, IFixedUpdate
         _isActive = true;
     }
     
-    public void ManualFixedUpdate(float fixedDeltaTime)
+    public void FixedUpdate()
     {
         if (!_isActive)
             return;
@@ -36,13 +39,16 @@ public class Bullet : PoolObject, IFixedUpdate
         Rb.velocity = Vector2.ClampMagnitude(Rb.velocity, _speed);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (!_isActive)
             return;
 
-        var damageable = other.collider.GetComponent<IDamageable>();
+        var damageable = other.GetComponent<IDamageable>();
         if (damageable == null)
+            return;
+        
+        if (damageable.ActorType != _targetType)
             return;
         
         damageable.TakeDamage(_damage);

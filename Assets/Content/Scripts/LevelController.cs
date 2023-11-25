@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -9,6 +10,7 @@ public class LevelController : MonoBehaviour
 
     private UpdateSystem _updateSystem;
     private EnemiesSystem _enemiesSystem;
+    private WeaponSystem _weaponSystem;
 
     private Camera _camera;
     
@@ -26,7 +28,22 @@ public class LevelController : MonoBehaviour
 
         _updateSystem = new GameObject("UpdateSystem").AddComponent<UpdateSystem>();
         _enemiesSystem = new EnemiesSystem(worldSize, playerView.transform, _updateSystem);
+
+        _weaponSystem = new WeaponSystem(playerView.WeaponHolder, playerView.TargetType, _hud);
         
         _updateSystem.Register(_player);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _weaponSystem.SwitchWeapon();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _weaponSystem.Shot();
+        }
     }
 }

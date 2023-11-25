@@ -2,8 +2,10 @@
 
 public class RangeWeaponView : MonoBehaviour
 {
-    [SerializeField] protected Transform ShootPoint;
-    [SerializeField] private Bullet _prefab;
+    [SerializeField] private Transform _shotPoint;
 
-    protected Vector2 UpVector => transform.up;
+    public Vector2 UpVector => transform.up;
+    
+    public Vector2 ShotPoint => _shotPoint.position;
+
 }

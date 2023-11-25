@@ -32,7 +32,7 @@ Transform:
   - {fileID: 1819009279444369251}
   - {fileID: 7851268808828470980}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1931321976469252411
 MonoBehaviour:
@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46352521b9754a368a343baa058d2659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootPoint: {fileID: 7851268808828470980}
-  _prefab: {fileID: 0}
+  _shotPoint: {fileID: 7851268808828470980}
 --- !u!1 &5805528754667302133
 GameObject:
   m_ObjectHideFlags: 0

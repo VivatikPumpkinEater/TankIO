@@ -1,4 +1,4 @@
-﻿public interface IUnit : IDamageable, IUpdate, IFixedUpdate
+﻿public interface IUnit : IUpdate, IFixedUpdate
 {
     
 }

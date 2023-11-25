@@ -22,11 +22,11 @@ MonoBehaviour:
       DelayBetweenShots: 1
       FiringInBursts: 0
       BurstsSettings:
-        BulletCount: 55
-        DelayInBurst: 3.07
+        BulletCount: 0
+        DelayInBurst: 0
       ShootingFractions: 0
       FractionsSettings:
-        CountInFractions: 78
+        CountInFractions: 0
   - Name: Bursts
     WeaponView: {fileID: 2237371899903682083, guid: 4ab66794f840d5d4f809348b6d9b814e, type: 3}
     Settings:
@@ -40,7 +40,7 @@ MonoBehaviour:
         DelayInBurst: 0.1
       ShootingFractions: 0
       FractionsSettings:
-        CountInFractions: 78
+        CountInFractions: 0
   - Name: FractionsWeapon
     WeaponView: {fileID: 139434505780553106, guid: a04c518a06c563747b388803e1dedb86, type: 3}
     Settings:
@@ -50,8 +50,8 @@ MonoBehaviour:
       DelayBetweenShots: 1
       FiringInBursts: 0
       BurstsSettings:
-        BulletCount: 5
-        DelayInBurst: 0.1
+        BulletCount: 0
+        DelayInBurst: 0
       ShootingFractions: 1
       FractionsSettings:
         CountInFractions: 3

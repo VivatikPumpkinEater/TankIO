@@ -1,8 +1,5 @@
 public interface IDamageable
 {
-    public bool IsAlive { get; }
-    
+    public ActorType ActorType { get; }
     public void TakeDamage(float value);
-
-    public void StartDie();
 }

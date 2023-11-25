@@ -147,7 +147,7 @@ Transform:
   - {fileID: 512636797584461607}
   - {fileID: 327497094963351706}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &139434505780553106
 MonoBehaviour:
@@ -161,5 +161,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46352521b9754a368a343baa058d2659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootPoint: {fileID: 327497094963351706}
-  _prefab: {fileID: 0}
+  _shotPoint: {fileID: 327497094963351706}

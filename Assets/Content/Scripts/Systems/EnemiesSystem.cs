@@ -60,7 +60,7 @@ public class EnemiesSystem
 
     private void OnDie(IUnit enemy)
     {
-        _updateSystem.Register(enemy);
+        _updateSystem.Unregister(enemy);
         _enemies.Remove(enemy);
         
         if (_enemies.Count < MaxCount)

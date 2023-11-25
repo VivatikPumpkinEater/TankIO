@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5607516873198049358}
   - component: {fileID: 2405184009248655847}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4768509159401637991}
   - component: {fileID: 385114893234006145}
   - component: {fileID: 5821964234614446143}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RedBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
